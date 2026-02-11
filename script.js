@@ -15,21 +15,23 @@
 
 const addButton = document.getElementById('add-button');
 
-addButton.addEventListener("click", function(){
-
-  const deleteButton = document.createElement("button");
-
-  deleteButton.addEventListener("click", function(){
-    // someList.remove();
-  });
-})
 
 const myLibrary = [];
 
-function Books() {
+function Books(title, author, pages) {
  // the constructor...
+
 }
 
 function addBookToLibrary() {
   // take params, create a book then store it in the array
 }
+
+addButton.addEventListener("click", function(){
+
+  // const deleteButton = document.createElement("button");
+
+  // deleteButton.addEventListener("click", function(){
+    // someList.remove();
+  // });
+});
