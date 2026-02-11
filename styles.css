@@ -33,9 +33,7 @@ body {
 
 .header ul {
     list-style-type: none;
-    padding-right: 1em;
     display: flex;
-    align-items: baseline;
 }
 
 li.header-title {
@@ -44,13 +42,14 @@ li.header-title {
     margin-right: auto; 
 }
 
-.add-button {
+li .add-button {
     font-size: var(--font-size-base);
-    border-radius: 1em;
-    padding: 1em;
+    color: var(--font-color-main);
+    background-color: transparent;
+    border-color: transparent;
 }
 
-.add-button:hover {
+li .add-button:hover {
     text-decoration: underline;
     cursor: pointer;
 }
