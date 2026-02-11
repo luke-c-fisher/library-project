@@ -22,17 +22,32 @@
                 </li>
             </ul>   
         </div>
-        <div class="main-content">
-            <!-- Initial code for dialog container -->
-            <dialog id="intro-statement">
-                <button id="close-button" autofocus>
-                    <span>close</span>
-                </button>
-                <p>Hello Neighbor</p>
-            </dialog>
-            <output></output>
+        <div class="main-content"> 
+            <div class="prompt-container"></div>
         </div>
     </div>
 
+    <dialog id="prompt-input">
+        <form method="dialog" class="book-form">
+            <p>Add new book</p>
+            <div class="form-row">
+                <label for="title"></label>
+                <input type="text" placeholder="Title">
+            </div>
+            <div class="form-row">
+                <label for="author"></label>
+                <input type="text" placeholder="Author">
+            </div>
+            <div class="form-row">
+                <label for="pages"></label>
+                <input type="text" placeholder="Pages">
+            </div>
+            <div class="button-container">
+                <button id="close-button" formmethod="dialog">Cancel</button>
+                <button>Submit</button>
+            </div>
+        </form>
+    </dialog>
+    <output></output>
 </body>
 </html>

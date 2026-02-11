@@ -14,8 +14,9 @@
 // console.log(theHobbit.info());
 
 const addButton = document.getElementById('add-button');
-const dialog = document.getElementById('intro-statement');
+const dialog = document.getElementById('prompt-input');
 const closeButton = document.getElementById('close-button');
+const output = document.getElementById('prompt-output');
 
 
 const myLibrary = [];

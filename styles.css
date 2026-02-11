@@ -14,26 +14,39 @@
 }
 
 :root {
-    --font-color-main: #f0e6f6;
+    --font-type-main: 'Space-Grotesk', sans-serif;
+    --font-color-primary: #ffff;
+    --background-color-primary: #6b7280;
+    --font-color-accent: #6366f1;
+    --font-size-small: 0.8em;
     --font-size-base: 1.2em;
     --font-size-large: 2.4em;
     --font-size-largest: 4.8em;
-    --font-type-main: 'Space-Grotesk', sans-serif;
+    --shadow-basic: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 body {
     font-family: var(--font-type-main);
-    color: var(--font-color-main);
-    background-color: gray;
+    color: var(--font-color-primary);
 }
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+}
+/* HEADER */
 
 .header {
     padding: 2em;
+    background-color: var(--background-color-primary);
+    box-shadow: var(--shadow-basic);
 }
 
 .header ul {
     list-style-type: none;
     display: flex;
+    align-items: center;
 }
 
 li.header-title {
@@ -44,7 +57,7 @@ li.header-title {
 
 li .add-button {
     font-size: var(--font-size-base);
-    color: var(--font-color-main);
+    color: var(--font-color-primary);
     background-color: transparent;
     border-color: transparent;
 }
@@ -54,11 +67,59 @@ li .add-button:hover {
     cursor: pointer;
 }
 
-::backdrop {
-    min-height: 200px;
+/* MAIN CONTENT */
+
+
+dialog {
+    font-size: var(--font-size-base);
+    transform: translate(-50%, -50%);
+    background-color: #9ca3af;
+    position: fixed;
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    border-radius: 8px;
+    padding: 1.2em;
+}
+
+dialog .book-form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.book-form p {
+    font-weight: bolder;
     font-size: var(--font-size-base);
 }
+
+.book-form input {
+    width: 1fr;
+    border-radius: 5px;
+    background-color: white;
+    font-size: var(--font-size-base);
+    padding: 1em;
+    border: none;
+}
+
+.book-form .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.button-container button {
+    font-size: var(--font-size-small);
+    font-weight: bolder;
+    color: black;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--font-color-accent);
+}
+
+
+
 
 
