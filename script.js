@@ -13,6 +13,17 @@
 
 // console.log(theHobbit.info());
 
+const addButton = document.getElementById('add-button');
+
+addButton.addEventListener("click", function(){
+
+  const deleteButton = document.createElement("button");
+
+  deleteButton.addEventListener("click", function(){
+    // someList.remove();
+  });
+})
+
 const myLibrary = [];
 
 function Books() {
