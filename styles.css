@@ -4,3 +4,55 @@
     box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Space-Grotesk";
+  src:
+    url("fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2"),
+    url("fonts/SpaceGrotesk-VariableFont_wght.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+    --font-color-main: #f0e6f6;
+    --font-size-base: 1.2em;
+    --font-size-large: 2.4em;
+    --font-size-largest: 4.8em;
+    --font-type-main: 'Space-Grotesk', sans-serif;
+}
+
+body {
+    font-family: var(--font-type-main);
+    color: var(--font-color-main);
+    background-color: gray;
+}
+
+.header {
+    padding: 2em;
+}
+
+.header ul {
+    list-style-type: none;
+    padding-right: 1em;
+    display: flex;
+    align-items: baseline;
+}
+
+li.header-title {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    margin-right: auto; 
+}
+
+.add-button {
+    font-size: var(--font-size-base);
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.add-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
