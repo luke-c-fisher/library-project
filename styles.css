@@ -54,4 +54,11 @@ li .add-button:hover {
     cursor: pointer;
 }
 
+::backdrop {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-size-base);
+}
+
 

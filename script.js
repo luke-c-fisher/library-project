@@ -14,11 +14,16 @@
 // console.log(theHobbit.info());
 
 const addButton = document.getElementById('add-button');
+const dialog = document.getElementById('intro-statement');
+const closeButton = document.getElementById('close-button');
 
 
 const myLibrary = [];
 
 function Books(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
  // the constructor...
 
 }
@@ -28,10 +33,16 @@ function addBookToLibrary() {
 }
 
 addButton.addEventListener("click", function(){
+  dialog.showModal();
+});
 
-  // const deleteButton = document.createElement("button");
+closeButton.addEventListener("click", function(){
+  dialog.close();
+});
+
+
+ // const deleteButton = document.createElement("button");
 
   // deleteButton.addEventListener("click", function(){
     // someList.remove();
   // });
-});
