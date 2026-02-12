@@ -27,7 +27,8 @@
 
 body {
     font-family: var(--font-type-main);
-    color: var(--font-color-primary);
+    /* color: var(--font-color-primary); */
+    color: black;
 }
 
 .container {

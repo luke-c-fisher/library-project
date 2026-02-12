@@ -23,7 +23,7 @@
             </ul>   
         </div>
         <div class="main-content"> 
-            <div class="prompt-container"></div>
+            <div class="card-container"></div>
         </div>
     </div>
 
@@ -32,22 +32,22 @@
             <p>Add new book</p>
             <div class="form-row">
                 <label for="title"></label>
-                <input type="text" placeholder="Title">
+                <input type="text" id="book-title" placeholder="Title">
             </div>
             <div class="form-row">
                 <label for="author"></label>
-                <input type="text" placeholder="Author">
+                <input type="text" id="book-author" placeholder="Author">
             </div>
             <div class="form-row">
                 <label for="pages"></label>
-                <input type="text" placeholder="Pages">
+                <input type="text" id="book-pages" placeholder="Pages">
             </div>
             <div class="button-container">
-                <button id="close-button" formmethod="dialog">Cancel</button>
-                <button>Submit</button>
+                <button id="close-button" formmethod="dialog" value="cancel">Cancel</button>
+                <button id="submit-button" value="confirm">Submit</button>
             </div>
         </form>
     </dialog>
-    <output></output>
+    <output id="prompt-output"></output>
 </body>
 </html>
