@@ -9,6 +9,8 @@
 //     }
 // }
 
+const { createElement } = require("react");
+
 // const theHobbit = new Books('The Hobbit', 'by J.R.R Tolkien', '295 pages', 'not read yet')
 
 // console.log(theHobbit.info());
@@ -18,10 +20,9 @@ const dialog = document.getElementById('prompt-input');
 const closeButton = document.getElementById('close-button');
 const submitButton = document.getElementById("submit-button");
 const outputValue = document.getElementById('prompt-output');
-// const bookTitle = document.getElementById('book-title');
-// const bookAuthor = document.getElementById('book-author');
-// const bookPages = document.getElementById('book-pages');
-const cardContainer = document.querySelector('.card-container');
+const bookTitle = document.getElementById('book-title');
+const bookAuthor = document.getElementById('book-author');
+const bookPages = document.getElementById('book-pages');
 
 
 const myLibrary = [];
@@ -33,31 +34,52 @@ function Books(title, author, pages) {
  // the constructor...
 }
 
-function addBookToLibrary(book) {
+function addBookToLibrary(title, author, pages) {
   Books.call(this, title, author, pages);
-  const book = {(title: 'the hobbit', author: 'J.R.R Tolkien', pages: '300')};
-  myLibrary.push(book);
-  // take params, create a book then store it in the array
+
+  const newBook = {
+    title: title,
+    author: author,
+    pages: pages
+  };
+  myLibrary.push(newBook);
 }
+
+function displayBooks() {
+  const cardContainer = document.querySelector('.card-container');
+
+  for (let i = 0; i < myLibrary.length; i++){
+    const card = createElement("div");
+    card.styles.display = 'flex';
+    card.styles.height = '200px';
+    card.styles.backgroundColor = 'blue';
+
+    card.textContent = myLibrary[i];
+    cardContainer.appendChild(card);
+  }
+};
 
 
 // EVENT LISTENERS 
 
-// addButton.addEventListener("click", function(){
-//   dialog.showModal();
-// });
+addButton.addEventListener("click", function(){
+  dialog.showModal();
+});
 
-// submitButton.addEventListener("click", function(e){
-//   const card = document.createElement('div');
-//   e.preventDefault;
-  // const bookTitle = title.value;
+submitButton.addEventListener("click", function(e){
+  e.preventDefault;
 
-  // card.textContent = `The title of the book: ${bookTitle}.`
-// })
+  const resultTitle = bookTitle.value;
+  const resultAuthor = bookAuthor.value;
+  const resultPages = bookPages.value;
 
-// closeButton.addEventListener("click", function(){
-//   dialog.close();
-// });
+  addBookToLibrary(resultTitle, resultAuthor, resultPages);
+  displayBooks();
+});
+
+closeButton.addEventListener("click", function(){
+  dialog.close();
+});
 
 
 
