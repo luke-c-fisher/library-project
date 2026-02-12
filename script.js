@@ -9,6 +9,8 @@
 //     }
 // }
 
+// const { createElement } = require("react");
+
 
 // const theHobbit = new Books('The Hobbit', 'by J.R.R Tolkien', '295 pages', 'not read yet')
 
@@ -22,6 +24,7 @@ const outputValue = document.getElementById('prompt-output');
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
+const cardContainer = document.querySelector('.card-container');
 
 
 const myLibrary = [];
@@ -45,15 +48,12 @@ function addBookToLibrary(title, author, pages) {
 }
 
 function displayBooks() {
-  const cardContainer = document.querySelector('.card-container');
-
+  const card = document.createElement('div');
+  
   for (let i = 0; i < myLibrary.length; i++){
-    const card = createElement("div");
-    card.styles.display = 'flex';
-    card.styles.height = '200px';
-    card.styles.backgroundColor = 'blue';
+    const bookInfo = myLibrary[i];
 
-    card.textContent = myLibrary[i];
+    card.textContent = bookInfo.title;
     cardContainer.appendChild(card);
   }
 };

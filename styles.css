@@ -121,6 +121,17 @@ dialog .book-form {
     border-radius: 5px;
 }
 
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card-container div {
+    height: 200px;
+    background-color: #10b981;
+    color: white;
+}
+
 
 
 
