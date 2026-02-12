@@ -9,7 +9,6 @@
 //     }
 // }
 
-const { createElement } = require("react");
 
 // const theHobbit = new Books('The Hobbit', 'by J.R.R Tolkien', '295 pages', 'not read yet')
 
