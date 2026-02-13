@@ -16,10 +16,12 @@
 :root {
     --font-type-main: 'Space-Grotesk', sans-serif;
     --font-color-primary: #ffff;
-    --background-color-primary: #6b7280;
-    --font-color-accent: #10b981;
+    --background-color-primary: #475569;
+    --background-color-secondary: #64748b;
+    --font-color-accent: #8b5cf6;
     --font-size-small: 0.8em;
     --font-size-base: 1.2em;
+    --font-size-medium: 1.5em;
     --font-size-large: 2.4em;
     --font-size-largest: 4.8em;
     --shadow-basic: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -27,8 +29,7 @@
 
 body {
     font-family: var(--font-type-main);
-    /* color: var(--font-color-primary); */
-    color: black;
+    color: var(--font-color-primary);
 }
 
 .container {
@@ -115,22 +116,55 @@ dialog .book-form {
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
     border: var(--background-color-primary);
     font-weight: bolder;
-    color: black;
+    color: var(--font-color-primary);
     padding: 1em;
     cursor: pointer;
     border-radius: 5px;
 }
 
+
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 1em;
+    gap: 15px;
 }
 
 .card-container div {
-    height: 200px;
-    background-color: #10b981;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+    font-size: var(--font-size-medium);
+    background-color: var(--background-color-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    min-height: 200px;
+    text-align: center;
+    border-radius: 1em;
+    font-weight: bolder;
     color: white;
 }
+
+.card-container div ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 1em;
+    gap: 1em;
+}
+
+.card-container div button {
+    padding: 1em;
+    border: none;
+    border-radius: 8px;
+    background-color: salmon;
+    font-size: var(--font-size-small);
+    font-weight: bolder;
+    color: black;
+    cursor: pointer;
+}
+
 
 
 

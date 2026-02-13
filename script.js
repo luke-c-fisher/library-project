@@ -48,12 +48,26 @@ function addBookToLibrary(title, author, pages) {
 }
 
 function displayBooks() {
-  const card = document.createElement('div');
-  
+
   for (let i = 0; i < myLibrary.length; i++){
+    const card = document.createElement('div');
+    const deleteButton = document.createElement('button');
     const bookInfo = myLibrary[i];
 
-    card.textContent = bookInfo.title;
+    card.innerHTML = `
+    <ul>
+        <li>"${bookInfo.title}"</li>
+        <li>${bookInfo.author}</li>
+        <li>${bookInfo.pages} pages</li>
+    </ul>
+    `;
+
+    deleteButton.textContent = `Delete`;
+    deleteButton.addEventListener("click", function(){
+      card.remove();
+    });
+
+    card.appendChild(deleteButton);
     cardContainer.appendChild(card);
   }
 };
