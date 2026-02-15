@@ -28,58 +28,77 @@ const bookPages = document.getElementById('book-pages');
 
 const myLibrary = [];
 
-function Books(title, author, pages) {
+function Books(title, author, pages, status) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.status = false;
  // the constructor...
 }
 
-function addBookToLibrary(title, author, pages) {
-  Books.call(this, title, author, pages);
+// Books.prototype.read = function(){
+//   this.status = true;
+// }
+
+// Books.prototype.notRead = function(){
+//   this.status = false;
+// }
+
+function addBookToLibrary(title, author, pages, status) {
+  Books.call(this, title, author, pages, status);
 
   const newBook = {
     title: title,
     author: author,
-    pages: pages
+    pages: pages,
+    status: status
   };
   myLibrary.push(newBook);
 }
+
+
 
 function displayBooks(arr) {
   const cardContainer = document.querySelector('.card-container');
   cardContainer.innerHTML = "";
 
   for (let i = 0; i < arr.length; i++){
+    const bookInfo = arr[i];
     const card = document.createElement('div');
 
     const listTitle = document.createElement('span');
     const listAuthor = document.createElement('span');
     const listPages = document.createElement('span');
     const deleteButton = document.createElement('button');
+    const statusButton = document.createElement('button');
 
-    const bookInfo = arr[i];
     listTitle.textContent = `"${bookInfo.title}"`;
     listAuthor.textContent = bookInfo.author;
     listPages.textContent = `${bookInfo.pages} pages`;
+
+
+    statusButton.textContent = bookInfo.status ? 'Not Read' : 'Read'; 
+    statusButton.addEventListener('click', function(){
+      bookInfo.status = !bookInfo.status;
+      displayBooks(myLibrary);
+    });
 
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
     });
 
+    
+
     card.appendChild(listTitle);
     card.appendChild(listAuthor);
     card.appendChild(listPages);
+    card.appendChild(statusButton);
     card.appendChild(deleteButton);
 
     cardContainer.appendChild(card);
   }
 };
-
-Books.prototype.status = function(){
-  
-}
 
 
 // EVENT LISTENERS 
@@ -95,7 +114,7 @@ submitButton.addEventListener("click", function(e){
   const resultAuthor = bookAuthor.value;
   const resultPages = bookPages.value;
 
-  addBookToLibrary(resultTitle, resultAuthor, resultPages);
+  addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
   displayBooks(myLibrary);
 });
 
