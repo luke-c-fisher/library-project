@@ -24,7 +24,6 @@ const outputValue = document.getElementById('prompt-output');
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
-const cardContainer = document.querySelector('.card-container');
 
 
 const myLibrary = [];
@@ -47,30 +46,40 @@ function addBookToLibrary(title, author, pages) {
   myLibrary.push(newBook);
 }
 
-function displayBooks() {
+function displayBooks(arr) {
+  const cardContainer = document.querySelector('.card-container');
+  cardContainer.innerHTML = "";
 
-  for (let i = 0; i < myLibrary.length; i++){
+  for (let i = 0; i < arr.length; i++){
     const card = document.createElement('div');
+
+    const listTitle = document.createElement('span');
+    const listAuthor = document.createElement('span');
+    const listPages = document.createElement('span');
     const deleteButton = document.createElement('button');
-    const bookInfo = myLibrary[i];
 
-    card.innerHTML = `
-    <ul>
-        <li>"${bookInfo.title}"</li>
-        <li>${bookInfo.author}</li>
-        <li>${bookInfo.pages} pages</li>
-    </ul>
-    `;
+    const bookInfo = arr[i];
+    listTitle.textContent = `"${bookInfo.title}"`;
+    listAuthor.textContent = bookInfo.author;
+    listPages.textContent = `${bookInfo.pages} pages`;
 
-    deleteButton.textContent = `Delete`;
+    deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
     });
 
+    card.appendChild(listTitle);
+    card.appendChild(listAuthor);
+    card.appendChild(listPages);
     card.appendChild(deleteButton);
+
     cardContainer.appendChild(card);
   }
 };
+
+Books.prototype.status = function(){
+  
+}
 
 
 // EVENT LISTENERS 
@@ -87,7 +96,7 @@ submitButton.addEventListener("click", function(e){
   const resultPages = bookPages.value;
 
   addBookToLibrary(resultTitle, resultAuthor, resultPages);
-  displayBooks();
+  displayBooks(myLibrary);
 });
 
 closeButton.addEventListener("click", function(){
