@@ -9,7 +9,7 @@
   src:
     url("fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2"),
     url("fonts/SpaceGrotesk-VariableFont_wght.woff") format("woff");
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
 }
 
@@ -26,6 +26,7 @@
     --font-size-largest: 4.8em;
     --shadow-basic: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 body {
     font-family: var(--font-type-main);
@@ -154,16 +155,24 @@ dialog .book-form {
     gap: 1em;
 }
 
-.card-container div button {
+.card-container .card-button-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    gap: 10px;
+}
+
+.card-container .card-button-container button {
     padding: 1em;
     border: none;
     border-radius: 8px;
     background-color: salmon;
-    font-size: var(--font-size-small);
+    font-size: 0.6em;
     font-weight: bolder;
     color: black;
     cursor: pointer;
 }
+
 
 
 

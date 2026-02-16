@@ -40,7 +40,7 @@ Books.prototype.toggleStatus = function(){
 }
 
 function addBookToLibrary(title, author, pages, status) {
-  const newBook = new Books(this, title, author, pages, status);
+  const newBook = new Books(title, author, pages, status);
   myLibrary.push(newBook);
 }
 
@@ -55,29 +55,40 @@ function displayBooks(arr) {
     const listTitle = document.createElement('span');
     const listAuthor = document.createElement('span');
     const listPages = document.createElement('span');
-    const deleteButton = document.createElement('button');
     const statusButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
+
 
     listTitle.textContent = `"${bookInfo.title}"`;
     listAuthor.textContent = bookInfo.author;
     listPages.textContent = `${bookInfo.pages} pages`;
 
-    submitButton.textContent = bookInfo.status ? 'Not Read' : 'Read';
-    submitButton.addEventListener("click", function(){
-      bookInfo.status
-    })
+    statusButton.textContent = 'Not read';
+    statusButton.addEventListener("click", function(){
+      statusButton.textContent = bookInfo.status ? 'Not read' : 'Read';
+      if (bookInfo.status) {
+        bookInfo.toggleStatus();
+        statusButton.style.backgroundColor = 'salmon';
+      } else {
+        bookInfo.toggleStatus();
+        statusButton.style.backgroundColor = '#A5D6A7';
+      }
+    });
 
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
     });
 
-  
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('card-button-container');
+    buttonContainer.appendChild(statusButton);
+    buttonContainer.appendChild(deleteButton);
+
     card.appendChild(listTitle);
     card.appendChild(listAuthor);
     card.appendChild(listPages);
-    card.appendChild(statusButton);
-    card.appendChild(deleteButton);
+    card.appendChild(buttonContainer);
 
     cardContainer.appendChild(card);
   }
@@ -97,7 +108,7 @@ submitButton.addEventListener("click", function(e){
   const resultAuthor = bookAuthor.value;
   const resultPages = bookPages.value;
 
-  // addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
+  addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
   displayBooks(myLibrary);
 });
 
