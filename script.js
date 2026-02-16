@@ -20,7 +20,6 @@ const addButton = document.getElementById('add-button');
 const dialog = document.getElementById('prompt-input');
 const closeButton = document.getElementById('close-button');
 const submitButton = document.getElementById("submit-button");
-const outputValue = document.getElementById('prompt-output');
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
@@ -36,13 +35,6 @@ function Books(title, author, pages, status) {
  // the constructor...
 }
 
-// Books.prototype.read = function(){
-//   this.status = true;
-// }
-
-// Books.prototype.notRead = function(){
-//   this.status = false;
-// }
 
 function addBookToLibrary(title, author, pages, status) {
   Books.call(this, title, author, pages, status);
@@ -54,6 +46,16 @@ function addBookToLibrary(title, author, pages, status) {
     status: status
   };
   myLibrary.push(newBook);
+}
+
+Object.setPrototypeOf(addBookToLibrary.prototype, Books.prototype);
+
+Books.prototype.read = function(){
+  this.status = true,
+}
+
+Books.prototype.notRead = function(){
+  this.status = false;
 }
 
 
@@ -77,10 +79,13 @@ function displayBooks(arr) {
     listPages.textContent = `${bookInfo.pages} pages`;
 
 
-    statusButton.textContent = bookInfo.status ? 'Not Read' : 'Read'; 
+    statusButton.textContent = bookInfo.status ? 'Not Read' : 'Read';
     statusButton.addEventListener('click', function(){
-      bookInfo.status = !bookInfo.status;
-      displayBooks(myLibrary);
+      if (bookInfo.status){
+        bookInfo.notRead();
+      } else {
+        bookInfo.read();
+      }
     });
 
     deleteButton.textContent = 'Delete';
