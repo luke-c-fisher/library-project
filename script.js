@@ -23,7 +23,8 @@ const submitButton = document.getElementById("submit-button");
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
-
+const cardContainer = document.querySelector('.card-container');
+const cardInputs = document.querySelectorAll('.inputs');
 
 const myLibrary = [];
 
@@ -32,6 +33,7 @@ function Books(title, author, pages, status) {
   this.author = author;
   this.pages = pages;
   this.status = status;
+  this.id = crypto.randomUUID();
  // the constructor...
 }
 
@@ -45,12 +47,11 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 function displayBooks(arr) {
-  const cardContainer = document.querySelector('.card-container');
-  cardContainer.innerHTML = "";
-
   for (let i = 0; i < arr.length; i++){
     const bookInfo = arr[i];
     const card = document.createElement('div');
+    // unique id for each div, combining DOM with id of book objects
+    card.id = "div-" + bookInfo.id;
 
     const listTitle = document.createElement('span');
     const listAuthor = document.createElement('span');
@@ -74,7 +75,7 @@ function displayBooks(arr) {
         statusButton.style.backgroundColor = '#A5D6A7';
       }
     });
-
+  
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
@@ -109,6 +110,7 @@ submitButton.addEventListener("click", function(e){
   const resultPages = bookPages.value;
 
   addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
+
   displayBooks(myLibrary);
 });
 

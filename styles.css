@@ -139,9 +139,7 @@ dialog .book-form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1em;
     min-height: 200px;
-    text-align: center;
     border-radius: 1em;
     font-weight: bolder;
     color: white;
@@ -164,6 +162,7 @@ dialog .book-form {
 
 .card-container .card-button-container button {
     padding: 1em;
+    min-width: 200px;
     border: none;
     border-radius: 8px;
     background-color: salmon;
