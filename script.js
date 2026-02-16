@@ -31,34 +31,18 @@ function Books(title, author, pages, status) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.status = false;
+  this.status = status;
  // the constructor...
 }
 
+Books.prototype.toggleStatus = function(){
+  this.status = !this.status; 
+}
 
 function addBookToLibrary(title, author, pages, status) {
-  Books.call(this, title, author, pages, status);
-
-  const newBook = {
-    title: title,
-    author: author,
-    pages: pages,
-    status: status
-  };
+  const newBook = new Books(this, title, author, pages, status);
   myLibrary.push(newBook);
 }
-
-Object.setPrototypeOf(addBookToLibrary.prototype, Books.prototype);
-
-Books.prototype.read = function(){
-  this.status = true,
-}
-
-Books.prototype.notRead = function(){
-  this.status = false;
-}
-
-
 
 function displayBooks(arr) {
   const cardContainer = document.querySelector('.card-container');
@@ -78,23 +62,17 @@ function displayBooks(arr) {
     listAuthor.textContent = bookInfo.author;
     listPages.textContent = `${bookInfo.pages} pages`;
 
-
-    statusButton.textContent = bookInfo.status ? 'Not Read' : 'Read';
-    statusButton.addEventListener('click', function(){
-      if (bookInfo.status){
-        bookInfo.notRead();
-      } else {
-        bookInfo.read();
-      }
-    });
+    submitButton.textContent = bookInfo.status ? 'Not Read' : 'Read';
+    submitButton.addEventListener("click", function(){
+      bookInfo.status
+    })
 
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
     });
 
-    
-
+  
     card.appendChild(listTitle);
     card.appendChild(listAuthor);
     card.appendChild(listPages);
@@ -119,7 +97,7 @@ submitButton.addEventListener("click", function(e){
   const resultAuthor = bookAuthor.value;
   const resultPages = bookPages.value;
 
-  addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
+  // addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
   displayBooks(myLibrary);
 });
 
