@@ -56,7 +56,7 @@ function displayBooks(arr) {
     const bookInfo = arr[i];
     const card = document.createElement('div');
     // unique id for each div, combining DOM with id of book objects
-    card.id = "div-" + bookInfo.id;
+    card.setAttribute('data-id',  bookInfo.id);
 
     const listTitle = document.createElement('span');
     const listAuthor = document.createElement('span');
@@ -81,10 +81,9 @@ function displayBooks(arr) {
     });
   
     deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener("click", function(){
-      card.remove();
-      removeBook(card);
-      console.log(myLibrary);
+    deleteButton.addEventListener("click", function(e){
+      const bookId = e.target.closest('[data-id]');
+      console.log(bookId); 
     });
 
     const buttonContainer = document.createElement('div');
