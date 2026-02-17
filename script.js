@@ -23,10 +23,12 @@ const submitButton = document.getElementById("submit-button");
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const bookPages = document.getElementById('book-pages');
+
 const cardContainer = document.querySelector('.card-container');
 const cardInputs = document.querySelectorAll('.inputs');
 
 const myLibrary = [];
+
 
 function Books(title, author, pages, status) {
   this.title = title;
@@ -34,7 +36,6 @@ function Books(title, author, pages, status) {
   this.pages = pages;
   this.status = status;
   this.id = crypto.randomUUID();
- // the constructor...
 }
 
 Books.prototype.toggleStatus = function(){
@@ -46,7 +47,11 @@ function addBookToLibrary(title, author, pages, status) {
   myLibrary.push(newBook);
 }
 
+
+
 function displayBooks(arr) {
+  cardContainer.innerHTML = '';
+
   for (let i = 0; i < arr.length; i++){
     const bookInfo = arr[i];
     const card = document.createElement('div');
@@ -58,7 +63,6 @@ function displayBooks(arr) {
     const listPages = document.createElement('span');
     const statusButton = document.createElement('button');
     const deleteButton = document.createElement('button');
-
 
     listTitle.textContent = `"${bookInfo.title}"`;
     listAuthor.textContent = bookInfo.author;
@@ -79,6 +83,8 @@ function displayBooks(arr) {
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(){
       card.remove();
+      removeBook(card);
+      console.log(myLibrary);
     });
 
     const buttonContainer = document.createElement('div');
@@ -104,14 +110,13 @@ addButton.addEventListener("click", function(){
 
 submitButton.addEventListener("click", function(e){
   e.preventDefault;
-
-  const resultTitle = bookTitle.value;
-  const resultAuthor = bookAuthor.value;
-  const resultPages = bookPages.value;
-
-  addBookToLibrary(resultTitle, resultAuthor, resultPages, false);
-
+  const titleBook = bookTitle.value;
+  const authorBook = bookAuthor.value;
+  const pagesBook = bookPages.value;
+  
+  addBookToLibrary(titleBook, authorBook, pagesBook, false);
   displayBooks(myLibrary);
+  console.log(myLibrary);
 });
 
 closeButton.addEventListener("click", function(){
