@@ -27,7 +27,7 @@ const bookPages = document.getElementById('book-pages');
 const cardContainer = document.querySelector('.card-container');
 const cardInputs = document.querySelectorAll('.inputs');
 
-const myLibrary = [];
+let myLibrary = [];
 
 
 function Books(title, author, pages, status) {
@@ -47,6 +47,10 @@ function addBookToLibrary(title, author, pages, status) {
   myLibrary.push(newBook);
 }
 
+function deleteItem(id){
+  myLibrary = myLibrary.filter(book => book.id !== id);
+  document.querySelector(`[data-id="${id}"]`).remove();
+}
 
 
 function displayBooks(arr) {
@@ -82,8 +86,10 @@ function displayBooks(arr) {
   
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener("click", function(e){
-      const bookId = e.target.closest('[data-id]');
-      console.log(bookId); 
+      const bookId = e.target.closest('[data-id]').dataset.id;
+      deleteItem(bookId);
+
+      console.log(myLibrary);
     });
 
     const buttonContainer = document.createElement('div');
@@ -101,6 +107,8 @@ function displayBooks(arr) {
 };
 
 
+
+
 // EVENT LISTENERS 
 
 addButton.addEventListener("click", function(){
@@ -113,7 +121,7 @@ submitButton.addEventListener("click", function(e){
   const authorBook = bookAuthor.value;
   const pagesBook = bookPages.value;
   
-  addBookToLibrary(titleBook, authorBook, pagesBook, false);
+  addBookToLibrary('Lord of the Rings', 'J.R.R. Tolkien', 462, false);
   displayBooks(myLibrary);
   console.log(myLibrary);
 });
