@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+     <script src="https://kit.fontawesome.com/2079928072.js" crossorigin="anonymous"></script>
+     <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul>
+                <li class="header-title">
+                    <i class="fa fa-book"></i>
+                    <span>Library</span>
+                </li>
+                <li>
+                    <i class="fa fa-plus-circle"></i>
+                    <button class="add-button" id="add-button">Add book</button>
+                </li>
+            </ul>   
+        </div>
+        <div class="main-content"> 
+            <div class="card-container"></div>
+        </div>
+    </div>
+
+    <dialog id="prompt-input">
+        <form method="dialog" class="book-form">
+            <p>Add new book</p>
+            <div class="form-row">
+                <label for="title"></label>
+                <input type="text" class="inputs" id="book-title" placeholder="Title">
+            </div>
+            <div class="form-row">
+                <label for="author"></label>
+                <input type="text" class="inputs" id="book-author" placeholder="Author">
+            </div>
+            <div class="form-row">
+                <label for="pages"></label>
+                <input type="text" class="inputs" id="book-pages" placeholder="Pages">
+            </div>
+            <div class="button-container">
+                <button id="close-button" formmethod="dialog" value="cancel">Cancel</button>
+                <button id="submit-button" value="confirm">Submit</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
