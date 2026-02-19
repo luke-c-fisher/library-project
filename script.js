@@ -29,7 +29,6 @@ const cardInputs = document.querySelectorAll('.inputs');
 
 let myLibrary = [];
 
-
 function Books(title, author, pages, status) {
   this.title = title;
   this.author = author;
@@ -68,7 +67,7 @@ function displayBooks(arr) {
     const statusButton = document.createElement('button');
     const deleteButton = document.createElement('button');
 
-    listTitle.textContent = `"${bookInfo.title}"`;
+    listTitle.textContent = `'${bookInfo.title}'`;
     listAuthor.textContent = bookInfo.author;
     listPages.textContent = `${bookInfo.pages} pages`;
 
