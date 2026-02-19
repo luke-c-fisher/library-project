@@ -117,7 +117,7 @@ submitButton.addEventListener("click", function(e){
   const authorBook = bookAuthor.value;
   const pagesBook = bookPages.value;
   
-  addBookToLibrary('Lord of the Rings', 'J.R.R. Tolkien', 462, false);
+  addBookToLibrary(titleBook, authorBook, pagesBook, false);
   displayBooks(myLibrary);
   console.log(myLibrary);
 });
@@ -125,11 +125,3 @@ submitButton.addEventListener("click", function(e){
 closeButton.addEventListener("click", function(){
   dialog.close();
 });
-
-
-
- // const deleteButton = document.createElement("button");
-
-  // deleteButton.addEventListener("click", function(){
-    // someList.remove();
-  // });
